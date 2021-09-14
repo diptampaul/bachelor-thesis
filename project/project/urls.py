@@ -23,7 +23,9 @@ from django.conf.urls import url
 urlpatterns = [
     path('', include('home.urls')),
     path('attendance/', include('face_recog_attendance.urls')),
+    path('summary/', include('summarizations.urls')),
     path('ec-dc/', include('encode_decode.urls')),
+    path('resume/', include('resume_analysis.urls')),
     path('admin/', admin.site.urls),
     #path('accounts/',include('examSysAccount.urls'))
 

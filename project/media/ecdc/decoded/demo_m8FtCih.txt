@@ -1,0 +1,59 @@
+hfhehfhefhhfhadsfhasdfh
+python -m pip install --user --upgrade pip
+python -m venv env
+source env/Scripts/acitvate
+
+
+
+django-admin startproject first-project
+python .\first_project\manage.py startapp calc
+python .\first_project\manage.py runserver
+python .\first_project\manage.py collectstatic
+
+python .\first_project\manage.py makemigrations  #To create migrate models
+python .\first_project\manage.py sqlmigrate [appname] [migration number] wise 0001  #To create the tables
+python .\first_project\manage.py migrate  #To migrate the tables to the PostGre Database
+
+
+#Admin Panel
+python .\first_project\manage.py createsuperuser #To Create a superuser or admin   Webpage: http://127.0.0.1:8000/admin
+
+
+
+
+#MySQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+#Postgre Connection Setting
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'telusko',  #Name of the DataBase #VGUExamSys
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost'
+    }
+}
+We need a connector to connect postgre and django,i.e. psycopg2 (pip install psycopg2)
+then we need to add the app in setting also.. E.g. 'wise.apps.WiseConfig'
+Then change the admin also: from .models import shorturl
+
+# Register your models here.
+admin.site.register(shorturl)
+
+
+
+
+
+'livereload.middleware.LiveReloadScript', for live reload middleware
+
+Heroku Middleware: whitenose.middleware.WhiteNoiseMiddleware
+sfdaaaaaaaaaaaaaaaaaaaaaaaa
+ssss
+sssssssssssssssssss
+ss

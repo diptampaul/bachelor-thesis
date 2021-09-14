@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGU Project</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png"> 
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}"> 
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("{% static 'images/VGU.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/encode_decode.css' %}" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <h1>Right Click and Save the file</h1>
+        <hr>
+    </div>
+    <img src="{{encode_obj.upload2.url}}" style="width: 100%; height: 70vh;">
+
+</body>
+
+</html>

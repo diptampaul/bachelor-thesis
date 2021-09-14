@@ -19,15 +19,131 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        .text,
+        .png,
+        .others,
+        .reverse{
+            display: none;
+        }
+
     </style>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/encode_decode.css' %}" type="text/css">
 </head>
 <body>
     <div class="header">
-        <h1>Welcome to Fusion Space</h1>
+        <h1>Select File Type</h1>
         <hr>
     </div>
-    
+
+
+    <div class="section" style="position: relative; margin-top: 30px">
+        <dl class="dropdown" style="text-align: center; position:absolute; left: 50%; transform:translateX(-50%);"> 
+  
+            <dt style="text-align: center; padding-left: 15px;">
+            <a href="#">
+              <span class="hida">Select</span>    
+              <p class="multiSel"></p>  
+            </a>
+            </dt>
+          
+            <dd>
+                <div class="mutliSelect">
+                    <ul>
+                        <li style="padding: 5px 0;">
+                            <input type="checkbox" value="text" class="file-type"/>Text File</li>
+                        <li style="padding: 5px 0;">
+                            <input type="checkbox" value="png" class="file-type"/>PNG Photo</li>
+                        <li style="padding: 5px 0;">
+                            <input type="checkbox" value="others" class="file-type"/>ZIP or Codes</li>
+                        <li style="padding: 3px 0;">
+                                <input type="checkbox" value="reverse" class="file-type"/>Get Your File</li>
+                    </ul>
+                </div>
+            </dd>
+            <br><br>
+          <button style="cursor: pointer;" id="filter">Filter</button>
+        </dl>
+    </div>
+    <div style="position: relative; top:15%; height: 30vh; width: 50%;">
+        <form action="{% url 'ecdc' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="text subsections">
+                <input type="text" name="filetype" value="text" style="display: none;">
+                <h3>Upload a .txt file</h3>
+                <input type="file" id="myFile" name="file">
+                <h3 style="padding-top: 50px;">Upload a .jpg file</h3>
+                <input type="file" id="jpgFile" name="jpg">
+                <input type="submit" style="margin-left: 85px; margin-top: 50px; padding:15px; border-radius: 15px; cursor:pointer;">
+            </div>
+            <div class="png subsections">
+                <input type="text" name="filetype" value="png" style="display: none;">
+                <h3>Upload a .png file</h3>
+                <input type="file" id="myFile" name="file">
+                <h3 style="padding-top: 50px;">Upload a .jpg file</h3>
+                <input type="file" id="jpgFile" name="jpg">
+                <input type="submit" style="margin-left: 85px; margin-top: 50px; padding:15px; border-radius: 15px; cursor:pointer;">
+            </div>
+            <div class="others subsections">
+                <input type="text" name="filetype" value="others" style="display: none;">
+                <h3>Upload a other file</h3>
+                <input type="file" id="myFile" name="file">
+                <h3 style="padding-top: 50px;">Upload a .jpg file</h3>
+                <input type="file" id="jpgFile" name="jpg">
+                <input type="submit" style="margin-left: 85px; margin-top: 50px; padding:15px; border-radius: 15px; cursor:pointer;">
+            </div>
+        </form>
+        <form action="{% url 'decode' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="reverse subsections">
+                <h3>Upload our file</h3>
+                <input type="file" id="myFile" name="o_file">
+                <input type="submit" style="margin-left: 85px; margin-top: 50px; padding:15px; border-radius: 15px; cursor:pointer;">
+            </div>
+        </form>
+    </div>
 </body>
-<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/ec_dc.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    /*
+	Dropdown with Multiple checkbox select with jQuery - May 27, 2013
+	(c) 2013 @ElmahdiMahmoud
+	license: https://www.opensource.org/licenses/mit-license.php
+*/
+
+$(".dropdown dt a").on('click', function() {
+    $(".dropdown dd ul").slideToggle('fast');
+  });
+  
+  $(".dropdown dd ul li a").on('click', function() {
+    $(".dropdown dd ul").hide();
+  });
+  
+  function getSelectedValue(id) {
+    return $("#" + id).find("dt a span.value").html();
+  }
+  
+  $(document).bind('click', function(e) {
+    var $clicked = $(e.target);
+    if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+  });
+  
+  $('.mutliSelect input[type="checkbox"]').on('click', function() {
+  
+    var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+      title = $(this).val() + ",";
+  
+    if ($(this).is(':checked')) {
+      var html = '<span title="' + title + '">' + title + '</span>';
+      $('.multiSel').append(html);
+      $(".hida").hide();
+    } else {
+      $('span[title="' + title + '"]').remove();
+      var ret = $(".hida");
+      $('.dropdown dt a').append(ret);
+  
+    }
+  });
+</script>
 </html>
