@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGU Project</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png"> 
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}"> 
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("{% static 'images/VGU.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Fusion Space</h1>
+        <hr>
+    </div>
+    <div class="redirection">
+        <div class="section">
+            <div class="student">
+                <a href="{% url 'students' %}">
+                    <p>Student Dashboard</p>
+                    <i class='bx bxs-info-circle' id="s_id" onclick="student_info()"></i>
+                </a>
+            </div>
+            <div class="faculty">
+                <a href="{% url 'dashboard' %}">
+                    <p>Faculty Dashboard</p>
+                    <i class='bx bxs-info-circle' id="f_id" onclick="faculty_info()"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'js/home.js' %}"></script>
+</html>

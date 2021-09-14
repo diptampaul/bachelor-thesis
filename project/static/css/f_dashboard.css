@@ -1,0 +1,128 @@
+/*CSS Reset*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+::-webkit-scrollbar{
+    display: none
+}
+
+
+
+/* Main CSS*/
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.header h1{
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: auto;
+    text-align: center;
+    padding: 10vh 0;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+th{
+    font-weight: 600;
+    text-align: center;
+}
+
+td, th {
+    margin: auto;
+    line-height: 4;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.details{
+    margin: 0 30px;
+    margin-top: 15px;
+}
+.mark{
+    position: fixed;
+    height: 60px;
+    width: 350px;
+    background-color: rgba(156, 52, 52, 0.431);
+    bottom: 0px;
+    right: 0px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    color: rgb(63, 45, 45);
+    font-weight: 700;
+    cursor: pointer;
+}
+.mark a{
+    height: 80px;
+    color: rgb(63, 45, 45);
+    font-size: 1.8rem;
+    margin: auto;
+    text-align: center;
+    padding: 10px 20px;
+}
+.mark a p{
+    display: inline-block;
+}
+.mark a i{
+    margin-top: 2px;
+    display: inline-block;
+}

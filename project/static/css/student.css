@@ -1,0 +1,33 @@
+body h1{
+    text-align: center;
+    margin: auto;
+    padding: 20px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgb(47, 41, 34);
+}
+.ct{
+    margin: 30px 340px;
+    background: rgba(141, 133, 133, 0.335);
+    padding: 20px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.ct:hover{
+    background: rgba(129, 114, 114, 0.335);
+    padding: 20px 15px;
+    box-shadow: 10px 10px 8px #888888;
+}
+.ct a{
+    height: 100%;
+    width: 100%;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+.ct a p{
+    text-align: center;
+    text-transform: uppercase;
+
+}
