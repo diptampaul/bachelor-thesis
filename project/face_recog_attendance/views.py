@@ -30,19 +30,21 @@ def attendance(request):
 
         facesCurFrame = face_recognition.face_locations(imgS)
         encodesCurFrame = face_recognition.face_encodings(imgS, facesCurFrame)
+        try:
+            for encodeFace, faceLoc in zip(encodesCurFrame, facesCurFrame):
+                matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
+                faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
+                print(faceDis)
+                matchIndex = np.argmin(faceDis)
 
-        for encodeFace, faceLoc in zip(encodesCurFrame, facesCurFrame):
-            matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
-            faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
-            print(faceDis)
-            matchIndex = np.argmin(faceDis)
-
-            if matches[matchIndex]:
-                name = classNames[matchIndex].upper()
-                print(name)
-        student = studentDetails.objects.get(call_name=name)
-        student.attendance_count += 1
-        student.save()
+                if matches[matchIndex]:
+                    name = classNames[matchIndex].upper()
+                    print(name)
+            student = studentDetails.objects.get(call_name=name)
+            student.attendance_count += 1
+            student.save()
+        except:
+            name = None
         students = studentDetails.objects.all()
         return render(request, 'f_dashboard.htm', {'student_obj': students,})
     else:
